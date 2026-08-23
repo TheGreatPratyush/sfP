@@ -139,6 +139,24 @@ const createProductImage = async (
     return result.rows[0];
 };
 
+// Deletes a product image record
+const deleteProductImage = async (
+    productId,
+    imageId
+) => {
+    const result = await pool.query(
+        `
+        DELETE FROM product_images
+        WHERE id = $1
+        AND product_id = $2
+        RETURNING *
+        `,
+        [imageId, productId]
+    );
+
+    return result.rows[0];
+};
+
 module.exports = {
     getAllProducts,
     getProductById,
@@ -146,4 +164,5 @@ module.exports = {
     updateProduct,
     deleteProduct,
     createProductImage,
+    deleteProductImage,
 };

@@ -16,6 +16,7 @@ import {
 import {
     getProductById,
     uploadProductImage,
+    deleteProductImage,
 } from "../api/products.api";
 
 import LoadingState from "../components/common/LoadingState";
@@ -52,22 +53,25 @@ const ProductDetails = () => {
         fetchProduct();
     }, [fetchProduct]);
 
-    const handleImageUpload = async ({ productId, file }) => {
+    // Upload product image
+    const handleImageUpload = async ({
+        productId,
+        file,
+    }) => {
         try {
             setImageLoading(true);
 
-            const response = await uploadProductImage(
-                productId,
-                file
-            );
+            const response =
+                await uploadProductImage(
+                    productId,
+                    file
+                );
 
             console.log(
                 "Image uploaded successfully:",
                 response
             );
 
-            // Refresh product so the newly saved image
-            // appears in the images grid.
             await fetchProduct();
 
             return response;
@@ -77,9 +81,36 @@ const ProductDetails = () => {
                 err
             );
 
-            // Important:
-            // Let ProductImageUpload know that upload failed.
             throw err;
+        } finally {
+            setImageLoading(false);
+        }
+    };
+
+    // Remove product image
+    const handleImageRemove = async (imageId) => {
+        const confirmed = window.confirm(
+            "Are you sure you want to remove this product image?"
+        );
+
+        if (!confirmed) {
+            return;
+        }
+
+        try {
+            setImageLoading(true);
+
+            await deleteProductImage(
+                productId,
+                imageId
+            );
+
+            await fetchProduct();
+        } catch (err) {
+            console.error(
+                "Failed to remove product image:",
+                err
+            );
         } finally {
             setImageLoading(false);
         }
@@ -99,7 +130,9 @@ const ProductDetails = () => {
                 <button
                     type="button"
                     className="product-details-page__back"
-                    onClick={() => navigate("/products")}
+                    onClick={() =>
+                        navigate("/products")
+                    }
                 >
                     <ArrowLeft
                         size={15}
@@ -126,7 +159,9 @@ const ProductDetails = () => {
                 <button
                     type="button"
                     className="product-details-page__back"
-                    onClick={() => navigate("/products")}
+                    onClick={() =>
+                        navigate("/products")
+                    }
                 >
                     <ArrowLeft
                         size={15}
@@ -159,7 +194,9 @@ const ProductDetails = () => {
                 <button
                     type="button"
                     className="product-details-page__back"
-                    onClick={() => navigate("/products")}
+                    onClick={() =>
+                        navigate("/products")
+                    }
                 >
                     <ArrowLeft
                         size={15}
@@ -172,6 +209,13 @@ const ProductDetails = () => {
                 <button
                     type="button"
                     className="product-details-page__edit"
+                    onClick={() => {
+                        navigate("/products", {
+                            state: {
+                                editProduct: product,
+                            },
+                        });
+                    }}
                 >
                     <Edit3
                         size={14}
@@ -305,6 +349,7 @@ const ProductDetails = () => {
                 images={product.images || []}
                 loading={imageLoading}
                 onUpload={handleImageUpload}
+                onRemove={handleImageRemove}
             />
         </section>
     );

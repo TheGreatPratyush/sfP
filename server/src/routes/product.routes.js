@@ -1,4 +1,5 @@
 const express = require("express");
+
 const productController = require("../controllers/product.controller");
 const validateProduct = require("../validators/product.validator");
 const upload = require("../middleware/upload");
@@ -7,11 +8,32 @@ const productRepository = require("../repositories/product.repository");
 const router = express.Router();
 
 // Defines product API endpoints
-router.get("/", productController.getAllProducts);
-router.get("/:id", productController.getProductById);
-router.post("/", validateProduct, productController.createProduct);
-router.put("/:id", validateProduct, productController.updateProduct);
-router.delete("/:id", productController.deleteProduct);
+router.get(
+    "/",
+    productController.getAllProducts
+);
+
+router.get(
+    "/:id",
+    productController.getProductById
+);
+
+router.post(
+    "/",
+    validateProduct,
+    productController.createProduct
+);
+
+router.put(
+    "/:id",
+    validateProduct,
+    productController.updateProduct
+);
+
+router.delete(
+    "/:id",
+    productController.deleteProduct
+);
 
 // Uploads product image and saves image record
 router.post(
@@ -19,22 +41,30 @@ router.post(
     upload.single("image"),
     async (req, res, next) => {
         try {
-            const image = await productRepository.createProductImage(
-                req.params.id,
-                `/uploads/${req.file.filename}`,
-                0,
-                true
-            );
+            const image =
+                await productRepository.createProductImage(
+                    req.params.id,
+                    `/uploads/${req.file.filename}`,
+                    0,
+                    true
+                );
 
             res.status(201).json({
                 success: true,
-                message: "Image uploaded successfully",
+                message:
+                    "Image uploaded successfully",
                 data: image,
             });
         } catch (error) {
             next(error);
         }
     }
+);
+
+// Deletes a product image
+router.delete(
+    "/:id/image/:imageId",
+    productController.deleteProductImage
 );
 
 module.exports = router;

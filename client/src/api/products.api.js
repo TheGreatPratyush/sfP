@@ -15,7 +15,10 @@ export const createProduct = async (productData) => {
     });
 };
 
-export const updateProduct = async (productId, productData) => {
+export const updateProduct = async (
+    productId,
+    productData
+) => {
     return await apiClient(`/products/${productId}`, {
         method: "PUT",
         body: productData,
@@ -28,13 +31,32 @@ export const deleteProduct = async (productId) => {
     });
 };
 
-export const uploadProductImage = async (productId, imageFile) => {
+export const uploadProductImage = async (
+    productId,
+    imageFile
+) => {
     const formData = new FormData();
 
     formData.append("image", imageFile);
 
-    return await apiClient(`/products/${productId}/image`, {
-        method: "POST",
-        body: formData,
-    });
+    return await apiClient(
+        `/products/${productId}/image`,
+        {
+            method: "POST",
+            body: formData,
+        }
+    );
+};
+
+// Delete a product image
+export const deleteProductImage = async (
+    productId,
+    imageId
+) => {
+    return await apiClient(
+        `/products/${productId}/image/${imageId}`,
+        {
+            method: "DELETE",
+        }
+    );
 };

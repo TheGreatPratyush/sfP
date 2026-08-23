@@ -3,7 +3,8 @@ const productService = require("../services/product.service");
 // Handles all product API operations
 const getAllProducts = async (req, res, next) => {
     try {
-        const products = await productService.getAllProducts();
+        const products =
+            await productService.getAllProducts();
 
         res.status(200).json({
             success: true,
@@ -16,7 +17,10 @@ const getAllProducts = async (req, res, next) => {
 
 const getProductById = async (req, res, next) => {
     try {
-        const product = await productService.getProductById(req.params.id);
+        const product =
+            await productService.getProductById(
+                req.params.id
+            );
 
         if (!product) {
             return res.status(404).json({
@@ -45,14 +49,15 @@ const createProduct = async (req, res, next) => {
             status,
         } = req.body;
 
-        const product = await productService.createProduct(
-            name,
-            description,
-            category_id,
-            price,
-            discount_percentage,
-            status
-        );
+        const product =
+            await productService.createProduct(
+                name,
+                description,
+                category_id,
+                price,
+                discount_percentage,
+                status
+            );
 
         res.status(201).json({
             success: true,
@@ -74,15 +79,16 @@ const updateProduct = async (req, res, next) => {
             status,
         } = req.body;
 
-        const product = await productService.updateProduct(
-            req.params.id,
-            name,
-            description,
-            category_id,
-            price,
-            discount_percentage,
-            status
-        );
+        const product =
+            await productService.updateProduct(
+                req.params.id,
+                name,
+                description,
+                category_id,
+                price,
+                discount_percentage,
+                status
+            );
 
         if (!product) {
             return res.status(404).json({
@@ -102,7 +108,10 @@ const updateProduct = async (req, res, next) => {
 
 const deleteProduct = async (req, res, next) => {
     try {
-        const product = await productService.deleteProduct(req.params.id);
+        const product =
+            await productService.deleteProduct(
+                req.params.id
+            );
 
         if (!product) {
             return res.status(404).json({
@@ -120,10 +129,46 @@ const deleteProduct = async (req, res, next) => {
     }
 };
 
+// Delete a product image
+const deleteProductImage = async (
+    req,
+    res,
+    next
+) => {
+    try {
+        const { id: productId, imageId } =
+            req.params;
+
+        const image =
+            await productService.deleteProductImage(
+                productId,
+                imageId
+            );
+
+        if (!image) {
+            return res.status(404).json({
+                success: false,
+                message:
+                    "Product image not found",
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            message:
+                "Product image deleted successfully",
+            data: image,
+        });
+    } catch (error) {
+        next(error);
+    }
+};
+
 module.exports = {
     getAllProducts,
     getProductById,
     createProduct,
     updateProduct,
     deleteProduct,
+    deleteProductImage,
 };
