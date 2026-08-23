@@ -1,0 +1,91 @@
+.variants-page {
+    width: 100%;
+    min-height: 100%;
+    padding: 32px;
+}
+
+.variants-page__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.variants-page__eyebrow {
+    margin: 0 0 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #888;
+}
+
+.variants-page__title {
+    margin: 0;
+    font-size: 30px;
+    line-height: 1.2;
+    font-weight: 600;
+    letter-spacing: -0.03em;
+    color: #111;
+}
+
+.variants-page__description {
+    margin: 8px 0 0;
+    max-width: 560px;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #777;
+}
+
+.variants-page__add-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 0 16px;
+    border: 1px solid #111;
+    border-radius: 8px;
+    background: #111;
+    color: #fff;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.variants-page__add-button:hover {
+    background: #2a2a2a;
+    border-color: #2a2a2a;
+}
+
+.variants-page__add-button:active {
+    transform: translateY(1px);
+}
+
+.variants-page__content {
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .variants-page {
+        padding: 24px 18px;
+    }
+
+    .variants-page__header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .variants-page__add-button {
+        width: 100%;
+    }
+
+    .variants-page__title {
+        font-size: 26px;
+    }
+}

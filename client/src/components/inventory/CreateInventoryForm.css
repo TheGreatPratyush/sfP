@@ -1,0 +1,191 @@
+.create-inventory-form {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.create-inventory-form__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.create-inventory-form__icon {
+    display: grid;
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.create-inventory-form__eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.create-inventory-form__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.create-inventory-form__description {
+    margin: 5px 0 0;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    line-height: 1.5;
+}
+
+.create-inventory-form__fields {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 20px 0;
+}
+
+.create-inventory-form__row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.create-inventory-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.create-inventory-form__field label {
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.create-inventory-form__field input,
+.create-inventory-form__field select {
+    width: 100%;
+    min-height: 40px;
+    box-sizing: border-box;
+    padding: 0 11px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 11px;
+    transition:
+        border-color 160ms ease,
+        box-shadow 160ms ease;
+}
+
+.create-inventory-form__field input:focus,
+.create-inventory-form__field select:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 2px var(--color-primary-soft);
+}
+
+.create-inventory-form__field input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.create-inventory-form__field input:disabled,
+.create-inventory-form__field select:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.create-inventory-form__loading {
+    display: flex;
+    min-height: 40px;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 11px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.create-inventory-form__error {
+    padding: 10px 11px;
+    border: 1px solid var(--color-danger);
+    border-radius: var(--radius-md);
+    color: var(--color-danger);
+    background: var(--color-bg);
+    font-size: 10px;
+    line-height: 1.4;
+}
+
+.create-inventory-form__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    padding-top: 16px;
+    border-top: 1px solid var(--color-border);
+}
+
+.create-inventory-form__cancel,
+.create-inventory-form__submit {
+    min-height: 36px;
+    padding: 0 15px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        opacity 160ms ease,
+        border-color 160ms ease;
+}
+
+.create-inventory-form__cancel {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.create-inventory-form__cancel:hover:not(:disabled) {
+    border-color: var(--color-border-hover);
+    color: var(--color-text-primary);
+}
+
+.create-inventory-form__submit {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: #0a0c0b;
+}
+
+.create-inventory-form__submit:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.create-inventory-form__cancel:disabled,
+.create-inventory-form__submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media (max-width: 500px) {
+    .create-inventory-form__row {
+        grid-template-columns: 1fr;
+    }
+
+    .create-inventory-form__actions {
+        flex-direction: column-reverse;
+    }
+
+    .create-inventory-form__cancel,
+    .create-inventory-form__submit {
+        width: 100%;
+    }
+}

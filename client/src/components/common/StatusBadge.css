@@ -1,0 +1,43 @@
+.owner-status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    width: fit-content;
+    padding: 5px 8px;
+    border-radius: 999px;
+    font-size: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.owner-status-badge__dot {
+    width: 5px;
+    height: 5px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.owner-status-badge--active,
+.owner-status-badge--in-stock {
+    background: var(--color-success-soft);
+    color: var(--color-success);
+}
+
+.owner-status-badge--inactive,
+.owner-status-badge--draft,
+.owner-status-badge--pending,
+.owner-status-badge--low-stock {
+    background: var(--color-warning-soft);
+    color: var(--color-warning);
+}
+
+.owner-status-badge--out-of-stock {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.owner-status-badge--unknown {
+    background: var(--color-surface-hover);
+    color: var(--color-text-muted);
+}

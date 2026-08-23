@@ -1,0 +1,211 @@
+.variant-form {
+    width: 100%;
+}
+
+.variant-form__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.variant-form__eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.variant-form__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.variant-form__close {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.variant-form__close:hover:not(:disabled) {
+    border-color: var(--color-border);
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.variant-form__body {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    padding: 22px;
+}
+
+.variant-form__field {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.variant-form__field--full {
+    grid-column: 1 / -1;
+}
+
+.variant-form__field label {
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.variant-form__field input,
+.variant-form__field select {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 11px;
+    transition:
+        border-color 160ms ease,
+        background 160ms ease;
+}
+
+.variant-form__field input::placeholder {
+    color: var(--color-text-muted);
+}
+
+.variant-form__field input:focus,
+.variant-form__field select:focus {
+    border-color: rgba(214, 255, 54, 0.45);
+    background: var(--color-surface);
+}
+
+.variant-form__price {
+    display: flex;
+    height: 40px;
+    align-items: center;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+}
+
+.variant-form__price:focus-within {
+    border-color: rgba(214, 255, 54, 0.45);
+}
+
+.variant-form__price > span {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    padding: 0 11px;
+    border-right: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.variant-form__price input {
+    height: 100%;
+    border: 0;
+    background: transparent;
+}
+
+.variant-form__price input:focus {
+    background: transparent;
+}
+
+.variant-form__error {
+    color: var(--color-danger);
+    font-size: 9px;
+}
+
+.variant-form__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    padding: 16px 22px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.variant-form__cancel,
+.variant-form__submit {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.variant-form__cancel {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.variant-form__cancel:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.variant-form__submit {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: #0a0c0b;
+}
+
+.variant-form__submit:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.variant-form__cancel:disabled,
+.variant-form__submit:disabled,
+.variant-form__close:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media (max-width: 600px) {
+    .variant-form__body {
+        grid-template-columns: 1fr;
+    }
+
+    .variant-form__field--full {
+        grid-column: auto;
+    }
+
+    .variant-form__header,
+    .variant-form__body,
+    .variant-form__footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .variant-form__footer {
+        flex-direction: column-reverse;
+    }
+
+    .variant-form__cancel,
+    .variant-form__submit {
+        width: 100%;
+    }
+}

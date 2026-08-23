@@ -1,0 +1,223 @@
+.variant-table {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.variant-table__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.variant-table__eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.variant-table__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.variant-table__count {
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.variant-table__wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.variant-table__table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+}
+
+.variant-table__table th {
+    padding: 12px 16px;
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 9px;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.variant-table__table th:first-child,
+.variant-table__table td:first-child {
+    padding-left: 22px;
+}
+
+.variant-table__table th:last-child,
+.variant-table__table td:last-child {
+    padding-right: 22px;
+}
+
+.variant-table__table td {
+    padding: 14px 16px;
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.variant-table__table tbody tr {
+    transition: background 160ms ease;
+}
+
+.variant-table__table tbody tr:hover {
+    background: var(--color-surface-hover);
+}
+
+.variant-table__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.variant-table__product {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.variant-table__icon {
+    display: grid;
+    width: 34px;
+    height: 34px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.variant-table__product-info {
+    display: flex;
+    min-width: 140px;
+    flex-direction: column;
+}
+
+.variant-table__product-name {
+    color: var(--color-text-primary);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.variant-table__product-id {
+    margin-top: 3px;
+    color: var(--color-text-muted);
+    font-size: 8px;
+}
+
+.variant-table__value {
+    color: var(--color-text-secondary);
+    white-space: nowrap;
+}
+
+.variant-table__sku {
+    color: var(--color-text-muted);
+    font-family: monospace;
+    font-size: 9px;
+    white-space: nowrap;
+}
+
+.variant-table__price {
+    color: var(--color-text-primary);
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.variant-table__actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4px;
+}
+
+.variant-table__action {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+.variant-table__action:hover {
+    border-color: var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.variant-table__action--danger:hover {
+    border-color: var(--color-danger);
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.variant-table__empty {
+    display: flex;
+    min-height: 260px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 32px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.variant-table__empty-icon {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.variant-table__empty-title {
+    margin: 16px 0 0;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.variant-table__empty-text {
+    max-width: 360px;
+    margin: 7px 0 0;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+    .variant-table__header {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+}

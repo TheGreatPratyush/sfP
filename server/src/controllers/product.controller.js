@@ -39,18 +39,18 @@ const createProduct = async (req, res, next) => {
         const {
             name,
             description,
-            categoryId,
+            category_id,
             price,
-            discountPercentage,
+            discount_percentage,
             status,
         } = req.body;
 
         const product = await productService.createProduct(
             name,
             description,
-            categoryId,
+            category_id,
             price,
-            discountPercentage,
+            discount_percentage,
             status
         );
 
@@ -68,9 +68,9 @@ const updateProduct = async (req, res, next) => {
         const {
             name,
             description,
-            categoryId,
+            category_id,
             price,
-            discountPercentage,
+            discount_percentage,
             status,
         } = req.body;
 
@@ -78,9 +78,9 @@ const updateProduct = async (req, res, next) => {
             req.params.id,
             name,
             description,
-            categoryId,
+            category_id,
             price,
-            discountPercentage,
+            discount_percentage,
             status
         );
 

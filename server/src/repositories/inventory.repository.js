@@ -49,16 +49,22 @@ const createInventory = async (
 };
 
 // Update inventory quantity
-const updateInventoryQuantity = async (variantId, quantity) => {
+const updateInventoryQuantity = async (
+    variantId,
+    quantity,
+    lowStockThreshold
+) => {
     const result = await pool.query(
         `
         UPDATE inventory
-        SET quantity = $1,
+        SET
+            quantity = $1,
+            low_stock_threshold = $2,
             updated_at = CURRENT_TIMESTAMP
-        WHERE variant_id = $2
+        WHERE variant_id = $3
         RETURNING *
         `,
-        [quantity, variantId]
+        [quantity, lowStockThreshold, variantId]
     );
 
     return result.rows[0];

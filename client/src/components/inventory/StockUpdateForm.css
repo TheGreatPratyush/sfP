@@ -1,0 +1,199 @@
+.stock-update-form {
+    width: 100%;
+}
+
+.stock-update-form__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stock-update-form__eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.stock-update-form__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.stock-update-form__close {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+}
+
+.stock-update-form__close:hover:not(:disabled) {
+    border-color: var(--color-border);
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.stock-update-form__product {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    margin: 20px 22px 0;
+    padding: 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+}
+
+.stock-update-form__product-icon {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    place-items: center;
+    border-radius: var(--radius-sm);
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.stock-update-form__product-name {
+    display: block;
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.stock-update-form__product-meta {
+    display: block;
+    margin-top: 4px;
+    color: var(--color-text-muted);
+    font-size: 9px;
+}
+
+.stock-update-form__body {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+    padding: 22px;
+}
+
+.stock-update-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.stock-update-form__field label {
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.stock-update-form__field input {
+    width: 100%;
+    height: 40px;
+    box-sizing: border-box;
+    padding: 0 12px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 11px;
+}
+
+.stock-update-form__field input:focus {
+    border-color: rgba(214, 255, 54, 0.45);
+    background: var(--color-surface);
+}
+
+.stock-update-form__error {
+    color: var(--color-danger);
+    font-size: 9px;
+}
+
+.stock-update-form__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    padding: 16px 22px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.stock-update-form__cancel,
+.stock-update-form__submit {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.stock-update-form__cancel {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.stock-update-form__cancel:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.stock-update-form__submit {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: #0a0c0b;
+}
+
+.stock-update-form__submit:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.stock-update-form__cancel:disabled,
+.stock-update-form__submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media (max-width: 560px) {
+    .stock-update-form__body {
+        grid-template-columns: 1fr;
+    }
+
+    .stock-update-form__header,
+    .stock-update-form__body,
+    .stock-update-form__footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .stock-update-form__product {
+        margin-right: 18px;
+        margin-left: 18px;
+    }
+
+    .stock-update-form__footer {
+        flex-direction: column-reverse;
+    }
+
+    .stock-update-form__cancel,
+    .stock-update-form__submit {
+        width: 100%;
+    }
+}

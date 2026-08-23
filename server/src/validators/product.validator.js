@@ -4,9 +4,9 @@ const validateProduct = (req, res, next) => {
     const {
         name,
         description,
-        categoryId,
+        category_id,
         price,
-        discountPercentage,
+        discount_percentage,
         status
     } = req.body;
 
@@ -17,7 +17,7 @@ const validateProduct = (req, res, next) => {
         });
     }
 
-    if (!categoryId || !Number.isInteger(Number(categoryId))) {
+    if (!category_id || !Number.isInteger(Number(category_id))) {
         return res.status(400).json({
             success: false,
             message: "Valid category ID is required",
@@ -32,10 +32,10 @@ const validateProduct = (req, res, next) => {
     }
 
     if (
-        discountPercentage !== undefined &&
-        (isNaN(Number(discountPercentage)) ||
-            Number(discountPercentage) < 0 ||
-            Number(discountPercentage) > 100)
+        discount_percentage !== undefined &&
+        (isNaN(Number(discount_percentage)) ||
+            Number(discount_percentage) < 0 ||
+            Number(discount_percentage) > 100)
     ) {
         return res.status(400).json({
             success: false,
@@ -58,9 +58,10 @@ const validateProduct = (req, res, next) => {
     }
 
     req.body.name = name.trim();
-    req.body.categoryId = Number(categoryId);
+    req.body.category_id = Number(category_id);
     req.body.price = Number(price);
-    req.body.discountPercentage = Number(discountPercentage || 0);
+    req.body.discount_percentage =
+        Number(discount_percentage || 0);
     req.body.status = status || "active";
 
     if (description !== undefined) {

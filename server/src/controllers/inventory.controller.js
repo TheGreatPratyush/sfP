@@ -70,10 +70,12 @@ const createInventory = async (req, res, next) => {
 
 const updateInventoryQuantity = async (req, res, next) => {
     try {
-        const inventory = await inventoryService.updateInventoryQuantity(
-            req.params.variantId,
-            req.body.quantity
-        );
+        const inventory =
+            await inventoryService.updateInventoryQuantity(
+                req.params.variantId,
+                req.body.quantity,
+                req.body.lowStockThreshold
+            );
 
         if (!inventory) {
             return res.status(404).json({

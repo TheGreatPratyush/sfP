@@ -24,10 +24,15 @@ const createInventory = async (
 };
 
 // Update inventory quantity
-const updateInventoryQuantity = async (variantId, quantity) => {
+const updateInventoryQuantity = async (
+    variantId,
+    quantity,
+    lowStockThreshold
+) => {
     return await inventoryRepository.updateInventoryQuantity(
         variantId,
-        quantity
+        quantity,
+        lowStockThreshold
     );
 };
 

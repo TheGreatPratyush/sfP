@@ -1,0 +1,270 @@
+.inventory-table {
+    width: 100%;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+}
+
+.inventory-table__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+    padding: var(--space-5) var(--space-6);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.inventory-table__eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.inventory-table__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.inventory-table__count {
+    color: var(--color-text-muted);
+    font-size: 10px;
+}
+
+.inventory-table__wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.inventory-table__table {
+    width: 100%;
+    min-width: 900px;
+    border-collapse: collapse;
+}
+
+.inventory-table__table th {
+    padding: 12px var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 9px;
+    font-weight: 600;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.inventory-table__table th:first-child,
+.inventory-table__table td:first-child {
+    padding-left: var(--space-6);
+}
+
+.inventory-table__table th:last-child,
+.inventory-table__table td:last-child {
+    padding-right: var(--space-6);
+}
+
+.inventory-table__table td {
+    padding: 14px var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    vertical-align: middle;
+}
+
+.inventory-table__table tbody tr {
+    transition: background var(--transition-fast);
+}
+
+.inventory-table__table tbody tr:hover {
+    background: var(--color-surface-hover);
+}
+
+.inventory-table__table tbody tr:last-child td {
+    border-bottom: 0;
+}
+
+.inventory-table__product {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.inventory-table__product-icon {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+    place-items: center;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.inventory-table__product-info {
+    display: flex;
+    min-width: 150px;
+    flex-direction: column;
+}
+
+.inventory-table__product-name {
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.inventory-table__product-id {
+    margin-top: 3px;
+    color: var(--color-text-muted);
+    font-size: 9px;
+}
+
+.inventory-table__variant {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.inventory-table__variant span:first-child {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+.inventory-table__variant span:last-child {
+    color: var(--color-text-muted);
+}
+
+.inventory-table__sku {
+    color: var(--color-text-muted);
+    font-family: monospace;
+    font-size: 9px;
+}
+
+.inventory-table__quantity {
+    font-weight: 700;
+}
+
+.inventory-table__quantity--in-stock {
+    color: var(--color-success);
+}
+
+.inventory-table__quantity--low-stock {
+    color: var(--color-warning);
+}
+
+.inventory-table__quantity--out-of-stock {
+    color: var(--color-danger);
+}
+
+.inventory-table__threshold {
+    color: var(--color-text-secondary);
+}
+
+.inventory-table__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    border-radius: 999px;
+    font-size: 8px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.inventory-table__status-dot {
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+}
+
+.inventory-table__status--in-stock {
+    background: var(--color-success-soft);
+    color: var(--color-success);
+}
+
+.inventory-table__status--low-stock {
+    background: var(--color-warning-soft);
+    color: var(--color-warning);
+}
+
+.inventory-table__status--out-of-stock {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.inventory-table__action {
+    display: grid;
+    width: 30px;
+    height: 30px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition:
+        background var(--transition-fast),
+        border-color var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.inventory-table__action:hover {
+    border-color: var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-primary);
+}
+
+.inventory-table__notice {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 11px var(--space-6);
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+    color: var(--color-text-muted);
+    font-size: 9px;
+}
+
+.inventory-table__empty {
+    display: flex;
+    min-height: 300px;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: var(--space-8);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    background: var(--color-surface);
+    text-align: center;
+}
+
+.inventory-table__empty-icon {
+    display: grid;
+    width: 44px;
+    height: 44px;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.inventory-table__empty-title {
+    margin: var(--space-4) 0 0;
+    color: var(--color-text-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.inventory-table__empty-text {
+    max-width: 360px;
+    margin: var(--space-2) 0 0;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    line-height: 1.5;
+}

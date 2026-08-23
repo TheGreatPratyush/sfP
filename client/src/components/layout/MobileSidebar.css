@@ -1,0 +1,192 @@
+.mobile-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 300;
+    display: flex;
+    width: min(280px, 86vw);
+    height: 100vh;
+    flex-direction: column;
+    background: var(--color-surface);
+    border-right: 1px solid var(--color-border);
+    box-shadow: var(--shadow-lg);
+    transform: translateX(-100%);
+    transition: transform var(--transition-normal);
+}
+
+.mobile-sidebar--open {
+    transform: translateX(0);
+}
+
+.mobile-sidebar__overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 290;
+    border: 0;
+    background: rgba(0, 0, 0, 0.6);
+    cursor: pointer;
+}
+
+.mobile-sidebar__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--header-height);
+    padding: 0 var(--space-5);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.mobile-sidebar__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.mobile-sidebar__logo {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border-radius: var(--radius-md);
+    background: var(--color-primary);
+    color: var(--color-bg);
+    font-size: 15px;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+}
+
+.mobile-sidebar__brand-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-sidebar__brand-name {
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.mobile-sidebar__brand-label {
+    margin-top: 2px;
+    color: var(--color-text-muted);
+    font-size: 11px;
+}
+
+.mobile-sidebar__close {
+    display: grid;
+    width: 36px;
+    height: 36px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-md);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast),
+        border-color var(--transition-fast);
+}
+
+.mobile-sidebar__close:hover {
+    border-color: var(--color-border);
+    background: var(--color-surface-elevated);
+    color: var(--color-text-primary);
+}
+
+.mobile-sidebar__navigation {
+    flex: 1;
+    padding: var(--space-6) var(--space-3);
+    overflow-y: auto;
+}
+
+.mobile-sidebar__section-title {
+    margin: 0 0 var(--space-3);
+    padding: 0 var(--space-3);
+    color: var(--color-text-muted);
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.mobile-sidebar__links {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.mobile-sidebar__link {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    min-height: 44px;
+    padding: 0 var(--space-3);
+    border-radius: var(--radius-md);
+    color: var(--color-text-secondary);
+    font-size: 13px;
+    font-weight: 500;
+    transition:
+        background var(--transition-fast),
+        color var(--transition-fast);
+}
+
+.mobile-sidebar__link:hover {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.mobile-sidebar__link--active {
+    background: var(--color-primary-soft);
+    color: var(--color-primary);
+}
+
+.mobile-sidebar__link-icon {
+    flex-shrink: 0;
+}
+
+.mobile-sidebar__footer {
+    padding: var(--space-4);
+    border-top: 1px solid var(--color-border);
+}
+
+.mobile-sidebar__status {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-bg);
+}
+
+.mobile-sidebar__status-dot {
+    width: 7px;
+    height: 7px;
+    flex-shrink: 0;
+    border-radius: 50%;
+    background: var(--color-success);
+    box-shadow: 0 0 0 4px var(--color-success-soft);
+}
+
+.mobile-sidebar__status-info {
+    display: flex;
+    min-width: 0;
+    flex-direction: column;
+}
+
+.mobile-sidebar__status-title {
+    color: var(--color-text-primary);
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.mobile-sidebar__status-text {
+    margin-top: 2px;
+    overflow: hidden;
+    color: var(--color-text-muted);
+    font-size: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

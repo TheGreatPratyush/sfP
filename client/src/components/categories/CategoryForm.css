@@ -1,0 +1,193 @@
+.category-form {
+    width: 100%;
+}
+
+.category-form__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 22px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.category-form__eyebrow {
+    margin: 0 0 4px;
+    color: var(--color-primary);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.category-form__title {
+    margin: 0;
+    color: var(--color-text-primary);
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.category-form__close {
+    display: grid;
+    width: 32px;
+    height: 32px;
+    place-items: center;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-muted);
+    cursor: pointer;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        color 160ms ease;
+}
+
+.category-form__close:hover:not(:disabled) {
+    border-color: var(--color-border);
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.category-form__close:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+.category-form__body {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 22px;
+}
+
+.category-form__field {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+}
+
+.category-form__field label {
+    color: var(--color-text-secondary);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.category-form__field input,
+.category-form__field textarea {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    outline: none;
+    background: var(--color-bg);
+    color: var(--color-text-primary);
+    font-family: inherit;
+    font-size: 11px;
+    transition:
+        border-color 160ms ease,
+        background 160ms ease;
+}
+
+.category-form__field input {
+    height: 40px;
+    padding: 0 12px;
+}
+
+.category-form__field textarea {
+    min-height: 100px;
+    resize: vertical;
+    padding: 11px 12px;
+    line-height: 1.5;
+}
+
+.category-form__field input::placeholder,
+.category-form__field textarea::placeholder {
+    color: var(--color-text-muted);
+}
+
+.category-form__field input:focus,
+.category-form__field textarea:focus {
+    border-color: rgba(214, 255, 54, 0.45);
+    background: var(--color-surface);
+}
+
+.category-form__field input:disabled,
+.category-form__field textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+.category-form__error {
+    color: var(--color-danger);
+    font-size: 9px;
+}
+
+.category-form__footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 9px;
+    padding: 16px 22px;
+    border-top: 1px solid var(--color-border);
+    background: var(--color-bg);
+}
+
+.category-form__cancel,
+.category-form__submit {
+    min-height: 36px;
+    padding: 0 14px;
+    border-radius: var(--radius-md);
+    font-family: inherit;
+    font-size: 10px;
+    font-weight: 600;
+    cursor: pointer;
+    transition:
+        background 160ms ease,
+        border-color 160ms ease,
+        opacity 160ms ease;
+}
+
+.category-form__cancel {
+    border: 1px solid var(--color-border);
+    background: transparent;
+    color: var(--color-text-secondary);
+}
+
+.category-form__cancel:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    color: var(--color-text-primary);
+}
+
+.category-form__submit {
+    border: 1px solid var(--color-primary);
+    background: var(--color-primary);
+    color: #0a0c0b;
+}
+
+.category-form__submit:hover:not(:disabled) {
+    opacity: 0.9;
+}
+
+.category-form__cancel:disabled,
+.category-form__submit:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}
+
+@media (max-width: 500px) {
+    .category-form__header,
+    .category-form__body,
+    .category-form__footer {
+        padding-left: 18px;
+        padding-right: 18px;
+    }
+
+    .category-form__footer {
+        flex-direction: column-reverse;
+    }
+
+    .category-form__cancel,
+    .category-form__submit {
+        width: 100%;
+    }
+}
