@@ -1,8 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 
-const SOCKET_URL =
-    import.meta.env.VITE_SOCKET_URL ||
-    "http://localhost:5001";
+const SOCKET_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5001";
 
 const useSocket = (eventName, onEvent) => {
     const socketRef = useRef(null);

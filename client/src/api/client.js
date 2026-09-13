@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://localhost:5001/api";
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5001/api";
 
 const apiClient = async (endpoint, options = {}) => {
     const {
@@ -10,6 +10,11 @@ const apiClient = async (endpoint, options = {}) => {
     const requestHeaders = {
         ...headers,
     };
+
+    const token = localStorage.getItem("sfp_admin_token");
+    if (token) {
+        requestHeaders["Authorization"] = `Bearer ${token}`;
+    }
 
     const isFormData = body instanceof FormData;
 

@@ -1,5 +1,7 @@
 import {
     LayoutDashboard,
+    ShoppingCart,
+    Users,
     Package,
     Boxes,
     Tags,
@@ -11,6 +13,18 @@ export const navigationItems = [
         label: "Dashboard",
         path: "/dashboard",
         icon: LayoutDashboard,
+    },
+
+    {
+        label: "Orders",
+        path: "/orders",
+        icon: ShoppingCart,
+    },
+
+    {
+        label: "Customers",
+        path: "/customers",
+        icon: Users,
     },
 
     {

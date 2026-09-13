@@ -1,0 +1,291 @@
+.orders-page {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+}
+
+.orders-page__header {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+.orders-page__eyebrow {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0 0 var(--space-1) 0;
+}
+
+.orders-page__title {
+    font-size: 1.75rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-2) 0;
+}
+
+.orders-page__description {
+    color: var(--color-text-muted);
+    font-size: 0.9375rem;
+    margin: 0;
+}
+
+/* Toolbar */
+.orders-page__toolbar {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    background: var(--color-surface);
+    padding: var(--space-4);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+}
+
+.orders-page__filters {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    flex-wrap: wrap;
+}
+
+.orders-page__search {
+    flex: 1;
+    min-width: 280px;
+}
+
+.orders-page__filter select,
+.orders-page__sort select {
+    appearance: none;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 0.625rem 2.25rem 0.625rem 1rem;
+    border-radius: var(--radius-md);
+    font-size: 0.875rem;
+    cursor: pointer;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%239aa3af' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.75rem center;
+    background-size: 1rem;
+    transition: all var(--transition-fast);
+}
+
+.orders-page__filter select:hover,
+.orders-page__sort select:hover {
+    border-color: var(--color-border-hover);
+    background-color: var(--color-surface-hover);
+}
+
+.orders-page__filter select:focus,
+.orders-page__sort select:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: -1px;
+    border-color: transparent;
+}
+
+.orders-page__clear-filters {
+    background: transparent;
+    border: none;
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 0.5rem;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.orders-page__clear-filters:hover {
+    color: var(--color-text-primary);
+    background: var(--color-surface-elevated);
+}
+
+/* Results Info */
+.orders-page__results {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+}
+
+.orders-page__results strong {
+    color: var(--color-text-primary);
+    font-weight: 600;
+}
+
+/* Content / Table */
+.orders-page__content {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+}
+
+.owner-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.owner-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+.owner-table th,
+.owner-table td {
+    padding: var(--space-4);
+    border-bottom: 1px solid var(--color-border);
+    white-space: nowrap;
+}
+
+.owner-table th {
+    background: var(--color-surface-elevated);
+    color: var(--color-text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.owner-table td {
+    font-size: 0.875rem;
+    color: var(--color-text-primary);
+}
+
+.owner-table tbody tr {
+    transition: background-color var(--transition-fast);
+}
+
+.owner-table tbody tr:hover {
+    background: var(--color-surface-elevated);
+}
+
+.owner-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.orders-table__id {
+    font-family: monospace;
+    color: var(--color-text-muted);
+}
+
+.orders-table__customer {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+.orders-table__customer-name {
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.orders-table__customer-phone {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.orders-table__price {
+    font-weight: 500;
+    font-variant-numeric: tabular-nums;
+}
+
+.orders-table__date {
+    color: var(--color-text-secondary);
+}
+
+.orders-table__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.orders-table__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: var(--radius-sm);
+    background: transparent;
+    color: var(--color-text-secondary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.orders-table__action:hover {
+    color: var(--color-text-primary);
+    background: var(--color-surface-hover);
+}
+
+.orders-table__status-select {
+    appearance: none;
+    background: var(--color-surface-elevated);
+    border: 1px solid var(--color-border);
+    color: var(--color-text-primary);
+    padding: 0.25rem 1.5rem 0.25rem 0.5rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.75rem;
+    cursor: pointer;
+}
+
+/* Pagination */
+.orders-page__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-2);
+}
+
+.orders-page__pagination-button {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    padding: 0.5rem 1rem;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.orders-page__pagination-button:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+    border-color: var(--color-border-hover);
+}
+
+.orders-page__pagination-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.orders-page__pagination-info {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+}
+
+.orders-page__pagination-info strong {
+    color: var(--color-text-primary);
+    font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .orders-page__header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .orders-page__filters {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .orders-page__search {
+        min-width: 100%;
+    }
+}

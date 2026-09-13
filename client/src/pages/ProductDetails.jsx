@@ -67,10 +67,7 @@ const ProductDetails = () => {
                     file
                 );
 
-            console.log(
-                "Image uploaded successfully:",
-                response
-            );
+
 
             await fetchProduct();
 

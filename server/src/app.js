@@ -9,6 +9,7 @@ const variantRoutes = require("./routes/variant.routes");
 const dashboardRoutes = require("./routes/dashboard.routes");
 const customerRoutes = require("./routes/customer.routes");
 const orderRoutes = require("./routes/order.routes");
+const authRoutes = require("./routes/auth.routes");
 
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
@@ -16,7 +17,11 @@ const errorHandler = require("./middleware/errorHandler");
 const app = express();
 
 // Configures application middleware
-app.use(cors());
+const corsOptions = {
+    origin: process.env.FRONTEND_URL || "*",
+    credentials: true,
+};
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -34,6 +39,7 @@ app.use("/api/variants", variantRoutes);
 app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/orders", orderRoutes);
+app.use("/api/auth", authRoutes);
 
 // Handles undefined routes and application errors
 app.use(notFound);

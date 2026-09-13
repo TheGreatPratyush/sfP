@@ -1,0 +1,8 @@
+OBSERVATIONS FROM DEMO (kurtiwalas.in)
+- Fonts: Instrument Serif (Headings), Chivo (Body)
+- Colors: Primary burgundy (rgb(67,6,6)), White background
+- Header: Transparent over hero, transitions to solid white sticky header on scroll
+- Mobile Header: Hamburger menu left, logo center, icons right
+- Hero: Full width, approx 70vh desktop, 60vh mobile. No text overlay.
+- Carousels: 4 products visible desktop, external centered arrows. Mobile uses native swipe, 2 visible products.
+- Product Cards: Portrait (3:4) image ratio. Serif title, sans-serif price. Minimalist (no inline buttons).

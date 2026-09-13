@@ -11,7 +11,7 @@
      Backgrounds
   ========================= */
 
-  --color-bg: #0b0d10;
+  --color-bg: lab(0.35% 1.57 0.55);
   --color-surface: #12161c;
   --color-surface-elevated: #181d24;
   --color-surface-hover: #1d232c;
@@ -126,6 +126,7 @@ body {
   margin: 0;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
 
   background: var(--color-bg);
   color: var(--color-text-primary);

@@ -33,7 +33,7 @@ const createOrder = async (customerData, items) => {
 
         const processedItems = [];
 
-        for (const item of uniqueItems) {
+        for (const item of items) {
             const variantRes = await client.query(
                 `
                 SELECT pv.*, p.name as product_name
@@ -183,7 +183,7 @@ const updateOrderStatus = async (id, newStatus) => {
         // Inventory Restoration
         if (newStatus === "cancelled") {
             const items = await orderRepository.getOrderItems(id, client);
-            for (const item of uniqueItems) {
+            for (const item of items) {
                 if (item.variant_id) {
                     await client.query(
                         `

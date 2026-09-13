@@ -3,7 +3,7 @@ import { ImagePlus, Upload, X } from "lucide-react";
 
 import "./ProductImageUpload.css";
 
-const API_BASE_URL = "http://localhost:5001";
+const API_BASE_URL = import.meta.env.VITE_BACKEND_URL || "http://localhost:5001";
 
 const ProductImageUpload = ({
     productId,

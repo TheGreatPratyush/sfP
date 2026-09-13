@@ -5,7 +5,28 @@ const getAllProducts = async () => {
     const result = await pool.query(`
         SELECT 
             p.*,
-            c.name AS category_name
+            c.name AS category_name,
+            COALESCE(
+                (SELECT json_agg(pi ORDER BY pi.display_order ASC, pi.id ASC)
+                 FROM product_images pi WHERE pi.product_id = p.id),
+                '[]'
+            ) AS images,
+            COALESCE(
+                (SELECT json_agg(
+                    json_build_object(
+                        'id', pv.id,
+                        'size', pv.size,
+                        'color', pv.color,
+                        'sku', pv.sku,
+                        'price', pv.price,
+                        'stock', COALESCE(i.quantity, 0)
+                    ) ORDER BY pv.id ASC
+                )
+                 FROM product_variants pv 
+                 LEFT JOIN inventory i ON i.variant_id = pv.id
+                 WHERE pv.product_id = p.id),
+                '[]'
+            ) AS variants
         FROM products p
         JOIN categories c ON p.category_id = c.id
         ORDER BY p.id ASC
@@ -22,19 +43,29 @@ const getProductById = async (id) => {
             p.*,
             c.name AS category_name,
             COALESCE(
-                json_agg(
-                    pi
-                    ORDER BY pi.display_order ASC, pi.id ASC
-                ) FILTER (WHERE pi.id IS NOT NULL),
+                (SELECT json_agg(pi ORDER BY pi.display_order ASC, pi.id ASC)
+                 FROM product_images pi WHERE pi.product_id = p.id),
                 '[]'
-            ) AS images
+            ) AS images,
+            COALESCE(
+                (SELECT json_agg(
+                    json_build_object(
+                        'id', pv.id,
+                        'size', pv.size,
+                        'color', pv.color,
+                        'sku', pv.sku,
+                        'price', pv.price,
+                        'stock', COALESCE(i.quantity, 0)
+                    ) ORDER BY pv.id ASC
+                )
+                 FROM product_variants pv 
+                 LEFT JOIN inventory i ON i.variant_id = pv.id
+                 WHERE pv.product_id = p.id),
+                '[]'
+            ) AS variants
         FROM products p
-        JOIN categories c 
-            ON p.category_id = c.id
-        LEFT JOIN product_images pi
-            ON pi.product_id = p.id
+        JOIN categories c ON p.category_id = c.id
         WHERE p.id = $1
-        GROUP BY p.id, c.name
         `,
         [id]
     );
