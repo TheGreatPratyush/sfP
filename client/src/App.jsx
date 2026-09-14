@@ -71,6 +71,9 @@ const App = () => {
                 </Route>
             </Route>
 
+            {/* Admin Redirect */}
+            <Route path="/admin" element={<Navigate to="/dashboard" replace />} />
+
             {/* Catch-all */}
             <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>

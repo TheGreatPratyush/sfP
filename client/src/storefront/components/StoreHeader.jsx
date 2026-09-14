@@ -3,12 +3,14 @@ import { Link } from 'react-router-dom';
 import { Search, ShoppingBag, Menu, X, User } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import { useCustomerAuth } from '../context/CustomerAuthContext';
+import { useCatalog } from '../hooks/useCatalog';
 
 const StoreHeader = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { toggleCart, cartCount } = useCart();
     const { customer, logout } = useCustomerAuth();
+    const { categories } = useCatalog();
     const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
     useEffect(() => {
@@ -42,10 +44,9 @@ const StoreHeader = () => {
                 )}
                 <Link to="/" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Home</Link>
                 <Link to="/shop" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Shop All</Link>
-                <Link to="/collections/new-arrivals" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>New Arrivals</Link>
-                <Link to="/collections/straight-suits" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Straight Suits</Link>
-                <Link to="/collections/co-ord-sets" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Co-ord Sets</Link>
-                <Link to="/collections/girls-kurti" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Girls Kurti</Link>
+                {categories.slice(0, 5).map(cat => (
+                    <Link key={cat.id} to={`/collections/${cat.id}`} className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>{cat.title}</Link>
+                ))}
             
                 {customer ? (
                     <>
