@@ -49,7 +49,7 @@ router.post(
             const image =
                 await productRepository.createProductImage(
                     req.params.id,
-                    process.env.CLOUDINARY_URL ? req.file.path : `/uploads/${req.file.filename}`,
+                    (process.env.CLOUDINARY_CLOUD_NAME || process.env.CLOUDINARY_URL) ? req.file.path : `/uploads/${req.file.filename}`,
                     0,
                     true
                 );
