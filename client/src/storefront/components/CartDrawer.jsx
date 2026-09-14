@@ -1,5 +1,5 @@
 import React from 'react';
-import { X, Trash2 } from 'lucide-react';
+import { X, Trash2, ShoppingBag } from 'lucide-react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useCart } from '../context/CartContext';
 
@@ -31,8 +31,12 @@ const CartDrawer = () => {
                 <div className="cart-drawer__content">
                     {cartItems.length === 0 ? (
                         <div className="cart-drawer__empty">
-                            <p>Your cart is currently empty.</p>
-                            <button className="btn-secondary" onClick={closeCart}>Continue Shopping</button>
+                            <div className="empty-cart-icon-wrapper" style={{ transform: 'scale(0.8)', marginBottom: '16px' }}>
+                                <ShoppingBag size={48} className="empty-cart-icon" />
+                            </div>
+                            <p style={{ fontFamily: 'var(--sf-font-heading)', fontSize: '24px', color: 'var(--sf-color-primary)', marginBottom: '8px' }}>Your cart is empty</p>
+                            <p style={{ marginBottom: '24px', color: 'var(--sf-color-muted)' }}>Discover something beautiful for your wardrobe.</p>
+                            <button className="btn-primary" onClick={() => { closeCart(); navigate('/shop'); }} style={{ width: '100%' }}>Continue Shopping</button>
                         </div>
                     ) : (
                         <div className="cart-drawer__items">

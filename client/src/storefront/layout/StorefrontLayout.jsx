@@ -5,10 +5,12 @@ import StoreHeader from '../components/StoreHeader';
 import StoreFooter from '../components/StoreFooter';
 import CartDrawer from '../components/CartDrawer';
 import { CartProvider } from '../context/CartContext';
+import { CustomerAuthProvider } from '../context/CustomerAuthContext';
 import '../styles/storefront.css';
 
 const StorefrontLayout = () => {
     return (
+        <CustomerAuthProvider>
         <CartProvider>
             <div className="storefront">
                 <AnnouncementBar />
@@ -20,6 +22,7 @@ const StorefrontLayout = () => {
                 <CartDrawer />
             </div>
         </CartProvider>
+        </CustomerAuthProvider>
     );
 };
 

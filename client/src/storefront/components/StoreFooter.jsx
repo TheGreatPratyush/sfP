@@ -20,7 +20,7 @@ const StoreFooter = () => {
             
             <div className="store-footer__bottom">
                 <p className="store-footer__copyright">
-                    &copy; 2026 KURTIWALAS.IN, Powered by React
+                    &copy; 2026 RANGRASIYA, Powered by React
                 </p>
             </div>
         </footer>

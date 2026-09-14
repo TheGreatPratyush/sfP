@@ -10,6 +10,8 @@ const dashboardRoutes = require("./routes/dashboard.routes");
 const customerRoutes = require("./routes/customer.routes");
 const orderRoutes = require("./routes/order.routes");
 const authRoutes = require("./routes/auth.routes");
+const customerAuthRoutes = require("./routes/customerAuth.routes");
+const customerOrderRoutes = require("./routes/customerOrder.routes");
 
 const notFound = require("./middleware/notFound");
 const errorHandler = require("./middleware/errorHandler");
@@ -40,6 +42,8 @@ app.use("/api/dashboard", dashboardRoutes);
 app.use("/api/customers", customerRoutes);
 app.use("/api/orders", orderRoutes);
 app.use("/api/auth", authRoutes);
+app.use("/api/customer-auth", customerAuthRoutes);
+app.use("/api/customer/orders", customerOrderRoutes);
 
 // Handles undefined routes and application errors
 app.use(notFound);

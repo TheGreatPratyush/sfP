@@ -60,8 +60,11 @@ const getCustomers = async (req, res, next) => {
         const page = Math.max(1, parseInt(req.query.page) || 1);
         const limit = Math.min(100, Math.max(1, parseInt(req.query.limit) || 10)); // Max limit 100
         const search = req.query.search ? String(req.query.search).trim() : null;
+        let isRegistered = null;
+        if (req.query.is_registered === "true") isRegistered = true;
+        if (req.query.is_registered === "false") isRegistered = false;
 
-        const result = await customerService.getCustomers(search, page, limit);
+        const result = await customerService.getCustomers(search, isRegistered, page, limit);
 
         res.status(200).json({
             success: true,

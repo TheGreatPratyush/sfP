@@ -26,14 +26,16 @@ const Customers = () => {
 
     const [searchQuery, setSearchQuery] = useState("");
     const [currentPage, setCurrentPage] = useState(1);
+    const [isRegisteredFilter, setIsRegisteredFilter] = useState("all");
 
     useEffect(() => {
         fetchCustomers({
             page: currentPage,
             limit: CUSTOMERS_PER_PAGE,
             search: searchQuery || undefined,
+            is_registered: isRegisteredFilter === "registered" ? true : undefined,
         });
-    }, [currentPage, searchQuery, fetchCustomers]);
+    }, [currentPage, searchQuery, isRegisteredFilter, fetchCustomers]);
 
     const handleSearchChange = (val) => {
         setSearchQuery(val);
@@ -116,6 +118,9 @@ const Customers = () => {
                                     <th>Name</th>
                                     <th>Email</th>
                                     <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Total Orders</th>
+                                    <th>Total Spent</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -131,6 +136,27 @@ const Customers = () => {
                                         </td>
                                         <td>
                                             <span className="customers-table__contact">{customer.phone || "—"}</span>
+                                        </td>
+                                        <td>
+                                            {customer.is_registered ? (
+                                                <span style={{ fontSize: '12px', background: '#d4edda', color: '#155724', padding: '2px 8px', borderRadius: '12px', fontWeight: 'bold' }}>Registered</span>
+                                            ) : (
+                                                <span style={{ fontSize: '12px', background: '#e2e3e5', color: '#383d41', padding: '2px 8px', borderRadius: '12px' }}>Guest</span>
+                                            )}
+                                        </td>
+                                        <td>
+                                            {customer.total_orders > 0 ? (
+                                                <span style={{ fontWeight: '500' }}>{customer.total_orders}</span>
+                                            ) : (
+                                                <span style={{ color: 'var(--owner-color-text-muted)' }}>—</span>
+                                            )}
+                                        </td>
+                                        <td>
+                                            {Number(customer.total_spent) > 0 ? (
+                                                <span style={{ fontWeight: '500' }}>Rs. {Number(customer.total_spent).toFixed(2)}</span>
+                                            ) : (
+                                                <span style={{ color: 'var(--owner-color-text-muted)' }}>—</span>
+                                            )}
                                         </td>
                                         <td>
                                             <button

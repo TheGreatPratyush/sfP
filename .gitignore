@@ -4,3 +4,4 @@ node_modules/
 !.env.example
 uploads/
 .DS_Store
+dev_db_backup.sql

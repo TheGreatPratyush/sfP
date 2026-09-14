@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, ShoppingBag, Menu, X } from 'lucide-react';
+import { Search, ShoppingBag, Menu, X, User } from 'lucide-react';
 import { useCart } from '../context/CartContext';
+import { useCustomerAuth } from '../context/CustomerAuthContext';
 
 const StoreHeader = () => {
     const [scrolled, setScrolled] = useState(false);
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
     const { toggleCart, cartCount } = useCart();
+    const { customer, logout } = useCustomerAuth();
+    const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -43,16 +46,55 @@ const StoreHeader = () => {
                 <Link to="/collections/straight-suits" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Straight Suits</Link>
                 <Link to="/collections/co-ord-sets" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Co-ord Sets</Link>
                 <Link to="/collections/girls-kurti" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Girls Kurti</Link>
+            
+                {customer ? (
+                    <>
+                        <Link to="/account" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>My Account</Link>
+                        <Link to="/account/orders" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>My Orders</Link>
+                        <button className="store-header__nav-link" style={{background:'none',border:'none',fontFamily:'inherit',fontSize:'inherit'}} onClick={() => { logout(); setMobileMenuOpen(false); }}>Logout</button>
+                    </>
+                ) : (
+                    <>
+                        <Link to="/login" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Login</Link>
+                        <Link to="/register" className="store-header__nav-link" onClick={() => setMobileMenuOpen(false)}>Register</Link>
+                    </>
+                )}
             </nav>
+
 
             <div className="store-header__logo">
                 <Link to="/">
-                    <h1>KURTIWALAS.IN</h1>
+                    <h1>RANGRASIYA</h1>
                 </Link>
             </div>
 
             <div className="store-header__icons">
                 <div className="store-header__icon"><Search size={20} /></div>
+
+                <div className="store-header__icon store-header__account-wrapper" 
+                     onMouseEnter={() => setAccountDropdownOpen(true)} 
+                     onMouseLeave={() => setAccountDropdownOpen(false)}>
+                    <Link to={customer ? "/account" : "/login"} style={{color: 'inherit', display: 'flex', alignItems: 'center'}}>
+                        <User size={20} />
+                    </Link>
+                    {accountDropdownOpen && (
+                        <div className="store-header__account-dropdown">
+                            {customer ? (
+                                <>
+                                    <Link to="/account" className="dropdown-item" style={{fontWeight: 'bold', color: 'var(--sf-color-primary)'}}>Hi, {customer.name}</Link>
+                                    <Link to="/account/orders" className="dropdown-item">My Orders</Link>
+                                    <button onClick={logout} className="dropdown-item" style={{color: '#d32f2f'}}>Logout</button>
+                                </>
+                            ) : (
+                                <>
+                                    <Link to="/login" className="dropdown-item">Login</Link>
+                                    <Link to="/register" className="dropdown-item">Register</Link>
+                                </>
+                            )}
+                        </div>
+                    )}
+                </div>
+
                 <button className="store-header__icon store-header__cart-btn" onClick={toggleCart} aria-label="Open Cart">
                     <ShoppingBag size={20} />
                     {cartCount > 0 && <span className="store-header__cart-count">{cartCount}</span>}

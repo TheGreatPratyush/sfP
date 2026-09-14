@@ -23,7 +23,12 @@ import Collection from "./storefront/pages/Collection";
 import StorefrontProductDetails from "./storefront/pages/ProductDetails";
 import Cart from "./storefront/pages/Cart";
 import Checkout from "./storefront/pages/Checkout";
-import OrderSuccess from "./storefront/pages/OrderSuccess";
+import CustomerLogin from "./storefront/pages/CustomerLogin";
+import CustomerRegister from "./storefront/pages/CustomerRegister";
+import CustomerProtectedRoute from "./storefront/layout/CustomerProtectedRoute";
+import Account from "./storefront/pages/Account";
+import MyOrders from "./storefront/pages/MyOrders";
+import MyOrderDetails from "./storefront/pages/MyOrderDetails";
 
 const App = () => {
     return (
@@ -36,7 +41,15 @@ const App = () => {
                 <Route path="/product/:productId" element={<StorefrontProductDetails />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
-                <Route path="/order-success" element={<OrderSuccess />} />
+                
+                {/* Customer Protected Routes */}
+                <Route element={<CustomerProtectedRoute />}>
+                    <Route path="/account" element={<Account />} />
+                    <Route path="/account/orders" element={<MyOrders />} />
+                    <Route path="/account/orders/:id" element={<MyOrderDetails />} />
+                </Route>
+                <Route path="/login" element={<CustomerLogin />} />
+                <Route path="/register" element={<CustomerRegister />} />
             </Route>
 
             {/* Owner Login */}

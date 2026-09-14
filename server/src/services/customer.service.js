@@ -13,11 +13,11 @@ const updateCustomer = async (id, name, email, phone, address, city, state, pinc
     return await customerRepository.updateCustomer(id, name, email, phone, address, city, state, pincode);
 };
 
-const getCustomers = async (search, page, limit) => {
+const getCustomers = async (search, isRegistered, page, limit) => {
     const offset = (page - 1) * limit;
     
-    const customers = await customerRepository.getCustomers(search, limit, offset);
-    const totalItems = await customerRepository.countCustomers(search);
+    const customers = await customerRepository.getCustomers(search, isRegistered, limit, offset);
+    const totalItems = await customerRepository.countCustomers(search, isRegistered);
     const totalPages = Math.ceil(totalItems / limit);
 
     return {

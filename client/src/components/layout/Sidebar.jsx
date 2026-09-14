@@ -8,10 +8,10 @@ const Sidebar = () => {
     return (
         <aside className="sidebar">
             <div className="sidebar__brand">
-                <div className="sidebar__logo">sfP</div>
+                <div className="sidebar__logo">R</div>
 
                 <div className="sidebar__brand-info">
-                    <span className="sidebar__brand-name">sfP</span>
+                    <span className="sidebar__brand-name">RANGRASIYA</span>
                     <span className="sidebar__brand-label">
                         Owner Panel
                     </span>

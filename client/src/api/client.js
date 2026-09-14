@@ -12,7 +12,7 @@ const apiClient = async (endpoint, options = {}) => {
     };
 
     const token = localStorage.getItem("sfp_admin_token");
-    if (token) {
+    if (token && !requestHeaders["Authorization"]) {
         requestHeaders["Authorization"] = `Bearer ${token}`;
     }
 

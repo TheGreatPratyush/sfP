@@ -6,6 +6,7 @@ export const getCustomers = async (params = {}) => {
     if (params.page) query.append("page", params.page);
     if (params.limit) query.append("limit", params.limit);
     if (params.search) query.append("search", params.search);
+    if (params.is_registered !== undefined) query.append("is_registered", params.is_registered);
     
     const queryString = query.toString();
     const endpoint = queryString ? `/customers?${queryString}` : "/customers";

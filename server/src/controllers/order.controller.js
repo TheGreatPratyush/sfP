@@ -4,6 +4,11 @@ const { emitOrderCreated } = require("../sockets/order.socket");
 const createOrder = async (req, res, next) => {
     try {
         const { customer, items } = req.body;
+        
+        if (req.customer) {
+            customer.email = req.customer.email;
+        }
+
         const order = await orderService.createOrder(customer, items);
 
         const io = req.app.get("io");
