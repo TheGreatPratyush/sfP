@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import apiClient from "../api/client";
+import Button from "../components/common/Button";
+import "./Login.css";
 
 const Login = () => {
     const [password, setPassword] = useState("");
@@ -22,20 +24,22 @@ const Login = () => {
     };
 
     return (
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', backgroundColor: '#f9f9f9' }}>
-            <form onSubmit={handleLogin} style={{ padding: '40px', background: 'white', borderRadius: '8px', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', textAlign: 'center' }}>
-                <h2>Owner Login</h2>
-                {error && <p style={{ color: 'red' }}>{error}</p>}
-                <div style={{ margin: '20px 0' }}>
+        <div className="admin-login-page">
+            <form onSubmit={handleLogin} className="admin-login-card">
+                <h2 className="admin-login-title">Owner Login</h2>
+                {error && <div className="admin-login-error">{error}</div>}
+                <div className="admin-login-input-wrapper">
                     <input 
                         type="password" 
                         placeholder="Admin Password" 
                         value={password} 
                         onChange={e => setPassword(e.target.value)}
-                        style={{ padding: '10px', width: '100%', boxSizing: 'border-box' }}
+                        className="admin-login-input"
                     />
                 </div>
-                <button type="submit" className="btn-primary" style={{ width: '100%' }}>Login</button>
+                <Button type="submit" variant="primary" size="large" className="admin-login-button">
+                    Login
+                </Button>
             </form>
         </div>
     );
