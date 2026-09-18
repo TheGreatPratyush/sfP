@@ -14,7 +14,7 @@ const StoreFooter = () => {
                         <Link to="#" className="store-footer__link">Terms of Service</Link>
                         <Link to="#" className="store-footer__link">Refund Policy</Link>
                         <Link to="#" className="store-footer__link">Shipping Policy</Link>
-                        <a href="mailto:pratushgupta27199@gmail.com" className="store-footer__link">Designed &amp; Developed by Pratyush Gupta</a>
+                        <a href="mailto:pratushgupta27199@gmail.com" className="store-footer__link">Designed &amp; Developed</a>
                     </nav>
                 </div>
             </div>
