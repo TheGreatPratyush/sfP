@@ -60,7 +60,8 @@
     padding: 0 40px;
     z-index: 90;
     transition: background-color 0.3s ease, color 0.3s ease, top 0.3s ease;
-    color: #ffffff;
+    background-color: #ffffff;
+    color: var(--sf-color-primary);
 }
 
 .store-header--scrolled {
@@ -1127,8 +1128,8 @@
     position: absolute;
     bottom: -6px;
     right: -6px;
-    background: var(--sf-color-primary);
-    color: #ffffff;
+    background: #ffffff;
+    color: var(--sf-color-primary);
     font-size: 10px;
     width: 16px;
     height: 16px;
@@ -1136,7 +1137,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid #ffffff;
+    border: 2px solid var(--sf-color-primary);
 }
 .store-header--scrolled .store-header__cart-count {
     border-color: var(--sf-color-primary);
