@@ -23,6 +23,7 @@ import ConfirmDialog from "../components/common/ConfirmDialog";
 import ProductForm from "../components/products/ProductForm";
 import ProductTable from "../components/products/ProductTable";
 
+import "../components/common/Button.css";
 import "./Products.css";
 
 const PRODUCTS_PER_PAGE = 10;
@@ -623,15 +624,16 @@ const Products = () => {
 
                 <button
                     type="button"
-                    className="products-page__add-button"
+                    className="owner-button owner-button--primary owner-button--medium"
                     onClick={openCreateForm}
                 >
                     <Plus
                         size={15}
                         strokeWidth={1.8}
+                        className="owner-button__icon"
                     />
 
-                    Add Product
+                    <span className="owner-button__label">Add Product</span>
                 </button>
             </div>
 
@@ -783,7 +785,7 @@ const Products = () => {
                     <div className="products-page__pagination">
                         <button
                             type="button"
-                            className="products-page__pagination-button"
+                            className="owner-button owner-button--secondary owner-button--small"
                             onClick={
                                 goToPreviousPage
                             }
@@ -801,12 +803,7 @@ const Products = () => {
                                     <button
                                         key={page}
                                         type="button"
-                                        className={`products-page__pagination-page ${
-                                            currentPage ===
-                                            page
-                                                ? "products-page__pagination-page--active"
-                                                : ""
-                                        }`}
+                                        className={`owner-button owner-button--small ${currentPage === page ? "owner-button--primary" : "owner-button--secondary"}`}
                                         onClick={() =>
                                             goToPage(
                                                 page
@@ -821,7 +818,7 @@ const Products = () => {
 
                         <button
                             type="button"
-                            className="products-page__pagination-button"
+                            className="owner-button owner-button--secondary owner-button--small"
                             onClick={
                                 goToNextPage
                             }
